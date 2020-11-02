@@ -16,7 +16,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-REGEX_KEY = r'(?:http://|https://| )(?:amazon\.it|amzn\.to)(?:[a-zA-Z0-9./:?=]*)'
+REGEX_KEY = r'(?:http://|https://| )(?:amazon\.it|amzn\.to)(?:[a-zA-Z0-9./:?=\-]*)'
 TELEGRAM_TOKEN = "YOUR KEY"
 AMAZON_AFFILIATE_TAG = "acuf59280d-21"
 
@@ -37,7 +37,7 @@ def start(update: Update, context: CallbackContext) -> int:
 
     string_index = 0
     for index in range(0, len(old_links)):
-        message = message[:string_index] + message[string_index:].replace(old_links[index], new_links[index], 1)
+        message = message[:string_index] + message[string_index:].replace(old_links[index], " " + new_links[index], 1)
         string_index = message[string_index:].index(new_links[index]) + len(new_links[index])
 
     if reply is None:
