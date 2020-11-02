@@ -16,7 +16,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-REGEX_KEY = r'(?:http://|https://| )(?:amazon\.it|amzn\.to)(?:[a-zA-Z0-9./:]*)'
+REGEX_KEY = r'(?:http://|https://| )(?:amazon\.it|amzn\.to)(?:[a-zA-Z0-9./:?=]*)'
 TELEGRAM_TOKEN = "YOUR KEY"
 AMAZON_AFFILIATE_TAG = "acuf59280d-21"
 
