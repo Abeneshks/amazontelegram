@@ -23,12 +23,7 @@ AMAZON_AFFILIATE_TAG = "acuf59280d-21"
 
 def start(update: Update, context: CallbackContext) -> int:
     user = update.message.from_user.username
-
-    try:
-        reply = update.message.reply_to_message.message_id
-    except:
-        reply = None
-
+    reply = update.message.reply_to_message
     chat_id = update.message.chat_id
 
     message = update.message.text
@@ -43,7 +38,7 @@ def start(update: Update, context: CallbackContext) -> int:
     if reply is None:
         context.bot.send_message(chat_id=chat_id, text="Inviato originariamente da: @" + str(user) + "\n\n" + str(message))
     else:
-        context.bot.send_message(chat_id=chat_id, reply_to_message_id=reply, text="Inviato originariamente da: @" + str(user) + "\n\n" + str(message))
+        context.bot.send_message(chat_id=chat_id, reply_to_message_id=reply.message_id, text="Inviato originariamente da: @" + str(user) + "\n\n" + str(message))
 
     update.message.delete()
 
